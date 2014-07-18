@@ -1,0 +1,29 @@
+{
+  "name": "hllapi-node",
+  "version": "0.3.0",
+  "description": "A HLLAPI wrapper in Node.js for interacting with a 3270 terminal emulator",
+  "main": "hllapi.js",
+  "dependencies": {
+    "node-gyp": "^0.13.1",
+    "ref": "^0.3.2",
+    "ffi": "^1.2.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chris-Cullins/hllapi-node.git"
+  },
+  "keywords": [
+    "hllapi",
+    "ffi"
+  ],
+  "author": "Chris Cullins",
+  "license": "MIT license",
+  "bugs": {
+    "url": "https://github.com/Chris-Cullins/hllapi-node/issues"
+  },
+  "homepage": "https://github.com/Chris-Cullins/hllapi-node"
+}
