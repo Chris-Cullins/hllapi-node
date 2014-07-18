@@ -1,9 +1,10 @@
 hllapi-node
 ===========
+[![Build Status](https://travis-ci.org/Chris-Cullins/hllapi-node.svg?branch=master)](https://travis-ci.org/Chris-Cullins/hllapi-node)
+
 
 ###A HLLAPI wrapper in Node.js for interacting with a 3270 terminal emulator
 
-[![Build Status](https://travis-ci.org/Chris-Cullins/hllapi-node.svg?branch=master)](https://travis-ci.org/Chris-Cullins/hllapi-node)
 
 Requirements
 ------------
