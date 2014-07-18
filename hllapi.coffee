@@ -1,14 +1,10 @@
 ffi = require('ffi')
 ref = require('ref')
-hlldll = ffi.DynamicLibrary("./hllapi32.dll")
-hllapi = hlldll.get('WinHLLAPI')
-#hllapi = hlldll.WinHLLAPI
-#WinHLLAPI = ffi.ForeignFunction(hllapi, Number,  [Number,  String,  Number, Number])
 
 intPtr = ref.refType(ref.types.int32)
 cString = ref.refType(ref.types.CString)
 
-hllapiLib = ffi.Library('hllapi32', {
+hllapi = ffi.Library('hllapi32', {
     'WinHLLAPI': [intPtr, [intPtr, cString, intPtr, intPtr]]
 });
 
@@ -19,7 +15,7 @@ connectPresentationSpace = (presentationSpace) ->
     length = ref.alloc(ref.types.int32,4)
     ps_position = ref.alloc(ref.types.int32, 0)
 
-    hllapiLib.WinHLLAPI(function_number, data_string, length, ps_position)
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
     return ps_position.deref()
 
 disconnectPresentationSpace = () ->
@@ -28,7 +24,7 @@ disconnectPresentationSpace = () ->
     length = ref.alloc(ref.types.int32,4)
     ps_position = ref.alloc(ref.types.int32, 0)
 
-    hllapiLib.WinHLLAPI(function_number, data_string, length, ps_position)
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
     return ps_position.deref()
 
 sendKey = (key) ->
@@ -37,8 +33,39 @@ sendKey = (key) ->
     length = ref.alloc(ref.types.int32,key.length)
     ps_position = ref.alloc(ref.types.int32, 0)
 
-    hllapiLib.WinHLLAPI(function_number, data_string, length, ps_position)
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
     return ps_position.deref()
+
+wait = () ->
+    function_number = ref.alloc(ref.types.int32, 4)
+    data_string = ref.allocCString('')
+    length = ref.alloc(ref.types.int32,0)
+    ps_position = ref.alloc(ref.types.int32, 0)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return ps_position.deref()
+
+copyPresentationSpace = (screen) ->
+    function_number = ref.alloc(ref.types.int32, 5)
+    data_string = ref.allocCString(screen)
+    length = ref.alloc(ref.types.int32,8000)
+    ps_position = ref.alloc(ref.types.int32, 0)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return data_string
+
+searchPresentationSpace = (target) ->
+    function_number = ref.alloc(ref.types.int32, 6)
+    data_string = ref.allocCString(target, 'ascii')
+    length = ref.alloc(ref.types.int32,target.length)
+    ps_position = ref.alloc(ref.types.int32, 0)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return {'returnCode':ps_position.deref(), 'position':length.deref()}
+
+
+
+
 
 
 console.log connectPresentationSpace('A')
