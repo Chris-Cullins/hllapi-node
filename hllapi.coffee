@@ -8,6 +8,7 @@ hllapi = ffi.Library('hllapi32', {
     'WinHLLAPI': [intPtr, [intPtr, cString, intPtr, intPtr]]
 });
 
+
 connectPresentationSpace = (presentationSpace) ->
 
     function_number = ref.alloc(ref.types.int32, 1)
@@ -18,6 +19,7 @@ connectPresentationSpace = (presentationSpace) ->
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
     return ps_position.deref()
 
+
 disconnectPresentationSpace = () ->
     function_number = ref.alloc(ref.types.int32, 2)
     data_string = ref.allocCString('A')
@@ -26,6 +28,7 @@ disconnectPresentationSpace = () ->
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
     return ps_position.deref()
+
 
 sendKey = (key) ->
     function_number = ref.alloc(ref.types.int32, 3)
@@ -36,6 +39,7 @@ sendKey = (key) ->
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
     return ps_position.deref()
 
+
 wait = () ->
     function_number = ref.alloc(ref.types.int32, 4)
     data_string = ref.allocCString('')
@@ -45,6 +49,7 @@ wait = () ->
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
     return ps_position.deref()
 
+
 copyPresentationSpace = (screen) ->
     function_number = ref.alloc(ref.types.int32, 5)
     data_string = ref.allocCString(screen)
@@ -53,6 +58,7 @@ copyPresentationSpace = (screen) ->
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
     return data_string
+
 
 searchPresentationSpace = (target) ->
     function_number = ref.alloc(ref.types.int32, 6)
@@ -64,6 +70,14 @@ searchPresentationSpace = (target) ->
     return {'returnCode':ps_position.deref(), 'position':length.deref()}
 
 
+queryCursorLocation = () ->
+    function_number = ref.alloc(ref.types.int32, 7)
+    data_string = ref.allocCString('')
+    length = ref.alloc(ref.types.int32,0)
+    ps_position = ref.alloc(ref.types.int32, 0)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return {'returnCode':ps_position.deref(), 'position':length.deref()}
 
 
 
