@@ -1,4 +1,4 @@
-hllapi-node  [![Build Status](https://travis-ci.org/Chris-Cullins/hllapi-node.svg?branch=master)](https://travis-ci.org/Chris-Cullins/hllapi-node)
+hllapi-node  [![Build Status](https://travis-ci.org/Chris-Cullins/hllapi-node.svg?branch=master)](https://travis-ci.org/Chris-Cullins/hllapi-node)  ![Progress](http://progressed.io/bar/35)
 ===========
 
 
