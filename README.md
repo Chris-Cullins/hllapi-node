@@ -1,4 +1,4 @@
-hllapi-node  [![Build Status](https://travis-ci.org/Chris-Cullins/hllapi-node.svg?branch=master)](https://travis-ci.org/Chris-Cullins/hllapi-node)  ![Progress](http://progressed.io/bar/35)
+hllapi-node  [![Build Status](https://travis-ci.org/Chris-Cullins/hllapi-node.svg?branch=master)](https://travis-ci.org/Chris-Cullins/hllapi-node)  ![Progress](http://progressed.io/bar/39)
 ===========
 
 
@@ -7,8 +7,9 @@ hllapi-node  [![Build Status](https://travis-ci.org/Chris-Cullins/hllapi-node.sv
 
 Requirements
 ------------
-Node.js install matching your hllapi.dll (i.e. 32 bit)
-
+1. Node.js install matching your hllapi.dll (i.e. 32 bit)
+2. A terminal emulator that supports HLLAPI (Along with a terminal connection on some level, of course). 
+3. Willpower. Lots and lots of willpower.
 
 More Information on 3270 Emulator Programming:
 ----------------------------------------------
