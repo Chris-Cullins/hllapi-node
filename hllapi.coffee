@@ -1,13 +1,19 @@
 ffi = require('ffi')
 ref = require('ref')
+debug = require('./debug/logging')
 
 intPtr = ref.refType(ref.types.int32)
 cString = ref.refType(ref.types.CString)
+
+debugMode = false
 
 hllapi = ffi.Library('hllapi32', {
     'WinHLLAPI': [intPtr, [intPtr, cString, intPtr, intPtr]]
 });
 
+
+setDebugMode = (boolean) ->
+    debugMode = boolean
 
 connectPresentationSpace = (presentationSpace) ->
 
@@ -17,6 +23,7 @@ connectPresentationSpace = (presentationSpace) ->
     ps_position = ref.alloc(ref.types.int32, 0)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 1, ps_position.deref(), presentationSpace)
     return ps_position.deref()
 
 
@@ -79,6 +86,39 @@ queryCursorLocation = () ->
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
     return {'returnCode':ps_position.deref(), 'position':length.deref()}
 
+
+copyPresentationSpaceToString = (sizeOfSpace) ->
+    function_number = ref.alloc(ref.types.int32, 8)
+    holdingString = " "
+    for x in [1..sizeOfSpace] by 1
+        holdingString = holdingString + " "
+
+    data_string = ref.allocCString(holdingString)
+    length = ref.alloc(ref.types.int32,0)
+    ps_position = ref.alloc(ref.types.int32, 0)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return {'returnCode':ps_position.deref(), 'position':length.deref()}
+
+
+copyStringtoField = (input, position) ->
+    function_number = ref.alloc(ref.types.int32, 33)
+    data_string = ref.allocCString(input)
+    length = ref.alloc(ref.types.int32, input.length)
+    ps_position = ref.alloc(ref.types.int32, position)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return ps_position.deref()
+
+
+copyFieldtoString = (targetString, position) ->
+    function_number = ref.alloc(ref.types.int32, 34)
+    data_string = ref.allocCString(targetString)
+    length = ref.alloc(ref.types.int32, targetString.length)
+    ps_position = ref.alloc(ref.types.int32, position)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return {'returnCode':ps_position.deref(), 'position':length.deref(), 'dataString':data_string.deref()}
 
 
 

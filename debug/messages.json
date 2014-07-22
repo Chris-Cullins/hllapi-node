@@ -1,0 +1,25 @@
+{
+    "functionMessageArray": [
+        {
+            "functionNumber": 1,
+            "name": "Connect Presentation Space",
+            "returnCode": 1,
+            "message": "An incorrect host presentation space ID was specified. The specified session either does not exist, or is a logical printer session",
+            "explaination": "hllapi-node either cannot find your hllapi instance, or the presentation space you defined does not exist (this should be a char betwee 'A' and 'Z')"
+        },
+        {
+            "functionNumber": 2,
+            "name": "Disconnect Presentation Space",
+            "returnCode": 1,
+            "message": "Your program was not currently connected to the host presentation space.",
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {
+            "functionNumber": 3,
+            "name": "Send Key",
+            "returnCode": 1,
+            "message": "Your program was not currently connected to the host presentation space.",
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        }
+    ]
+}
