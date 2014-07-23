@@ -44,6 +44,7 @@ sendKey = (key) ->
     ps_position = ref.alloc(ref.types.int32, 0)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 3, ps_position.deref(), key)
     return ps_position.deref()
 
 
@@ -120,8 +121,8 @@ copyFieldtoString = (targetString, position) ->
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
     return {'returnCode':ps_position.deref(), 'position':length.deref(), 'dataString':data_string.deref()}
 
-
-
+## TEST CALLS, DELETE BEFORE NPM PUBLISHING ######
+setDebugMode(true)
 console.log connectPresentationSpace('A')
 console.log sendKey("H")
 console.log sendKey("I")

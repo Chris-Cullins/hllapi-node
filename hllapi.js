@@ -50,6 +50,7 @@
     length = ref.alloc(ref.types.int32, key.length);
     ps_position = ref.alloc(ref.types.int32, 0);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 3, ps_position.deref(), key);
     return ps_position.deref();
   };
 
@@ -139,6 +140,8 @@
       'dataString': data_string.deref()
     };
   };
+
+  setDebugMode(true);
 
   console.log(connectPresentationSpace('A'));
 
