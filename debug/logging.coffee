@@ -7,7 +7,7 @@ debugHLLAPI = (mode, functionNum, returnCode, dataString) ->
             for x in [0..messages.functionMessageArray.length - 1] by 1
                 if messages.functionMessageArray[x].functionNumber is functionNum
                     functionMessageObj = messages.functionMessageArray[x]
-                    
+
             console.log "\n\n[" + ts_hms.toISOString() + "]: Error on Function Name '" + functionMessageObj.name + "'."
             console.log "This function was called inside:"  ##TODO add node function name lib later
             console.log "You passed it the following data: " + dataString
@@ -18,7 +18,7 @@ debugHLLAPI = (mode, functionNum, returnCode, dataString) ->
                     message = functionMessageObj.message[x].mes
 
             console.log "HLLAPI's  message: " + message
-            console.log "Explaination: " + functionMessageObj.explaination + "\n\n"
+            ##console.log "Explaination: " + functionMessageObj.explaination + "\n\n"
     return
 
 

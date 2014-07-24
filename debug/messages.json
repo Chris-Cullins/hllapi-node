@@ -15,7 +15,7 @@
         {
             "functionNumber": 2,
             "name": "Disconnect Presentation Space",
-            "returnCode": 1,
+            "returnCode": [1,9],
             "message": [{"num":1, "mes":"Your program was not currently connected to the host presentation space."},
                         {"num":9, "mes":"A system error was encountered"}
             ],
@@ -24,7 +24,7 @@
         {
             "functionNumber": 3,
             "name": "Send Key",
-            "returnCode": 1,
+            "returnCode": [1,2,4,5,9],
             "message": [{"num":1, "mes":"Your program was not currently connected to the host presentation space."},
                         {"num":2, "mes":"An incorrect parameter was passed to HLLAPI"},
                         {"num":4, "mes":"The host session was busy; all of the keystrokes could not be sent."},
@@ -36,11 +36,34 @@
         {
             "functionNumber": 4,
             "name": "Wait",
-            "returnCode": 1,
+            "returnCode": [1,4,5,9],
             "message": [{"num":1, "mes":"Your program was not currently connected to the host presentation space."},
                         {"num":4, "mes":"Timeout while still in XCLOCK (X []) or XSYSTEM"},
                         {"num":5, "mes":"The keyboard is locked"},
                         {"num":9, "mes":"A system error was encountered."}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {
+            "functionNumber": 5,
+            "name": "CopyPresentationSpace",
+            "returnCode": [1,4,5,9],
+            "message": [{"num":1, "mes":"Your program was not currently connected to the host presentation space."},
+                        {"num":4, "mes":"The host presentation space contents were copied. The connected host presentation space was waiting for a response."},
+                        {"num":5, "mes":"The host presentation space was copied. The keyboard was locked."},
+                        {"num":9, "mes":"A system error was encountered."}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {
+            "functionNumber": 6,
+            "name": "SearchPresentationSpace",
+            "returnCode": [1,2,7,9,24],
+            "message": [{"num":1, "mes":"Your program was not currently connected to the host presentation space."},
+                        {"num":2, "mes":"An error was made in specifying parameters."},
+                        {"num":7, "mes":"The host presentation space position is not valid."},
+                        {"num":9, "mes":"A system error was encountered."},
+                        {"num":24, "mes":"The search string was not found."}
             ],
             "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
         }

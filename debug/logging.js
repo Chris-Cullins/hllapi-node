@@ -24,7 +24,6 @@
           }
         }
         console.log("HLLAPI's  message: " + message);
-        console.log("Explaination: " + functionMessageObj.explaination + "\n\n");
       }
     }
   };
