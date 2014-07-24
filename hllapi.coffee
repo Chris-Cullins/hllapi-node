@@ -34,6 +34,7 @@ disconnectPresentationSpace = () ->
     ps_position = ref.alloc(ref.types.int32, 0)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 2, ps_position.deref(), '')
     return ps_position.deref()
 
 
@@ -123,7 +124,7 @@ copyFieldtoString = (targetString, position) ->
 
 ## TEST CALLS, DELETE BEFORE NPM PUBLISHING ######
 setDebugMode(true)
-console.log connectPresentationSpace('A')
-console.log sendKey("H")
-console.log sendKey("I")
-console.log disconnectPresentationSpace()
+connectPresentationSpace('A')
+sendKey("H")
+sendKey("I")
+#console.log disconnectPresentationSpace()

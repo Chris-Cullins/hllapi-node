@@ -3,22 +3,45 @@
         {
             "functionNumber": 1,
             "name": "Connect Presentation Space",
-            "returnCode": 1,
-            "message": "An incorrect host presentation space ID was specified. The specified session either does not exist, or is a logical printer session",
-            "explaination": "hllapi-node either cannot find your hllapi instance, or the presentation space you defined does not exist (this should be a char betwee 'A' and 'Z')"
+            "returnCode": [1,4,5,9,11],
+            "message": [{"num":1, "mes":"An incorrect host presentation space ID was specified. The specified session either does not exist, or is a logical printer session"},
+                        {"num":4, "mes":"Successful connection was achieved, but the host presentation space is busy"},
+                        {"num":5, "mes":"Successful connection was achieved, but the host presentation space is locked (input unhibited)."},
+                        {"num":9, "mes":"A system error occured."},
+                        {"num":11, "mes":"This resource is unavailable. The host presentation space is already being used by another system function"}
+                    ],
+            "explaination": "Errors on Connection Presentation Space are usually caused because hllapi-node either doesn't find your hllapi instance, or the presentation space you defined does not exist (this should be a char betwee 'A' and 'Z')"
         },
         {
             "functionNumber": 2,
             "name": "Disconnect Presentation Space",
             "returnCode": 1,
-            "message": "Your program was not currently connected to the host presentation space.",
+            "message": [{"num":1, "mes":"Your program was not currently connected to the host presentation space."},
+                        {"num":9, "mes":"A system error was encountered"}
+            ],
             "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
         },
         {
             "functionNumber": 3,
             "name": "Send Key",
             "returnCode": 1,
-            "message": "Your program was not currently connected to the host presentation space.",
+            "message": [{"num":1, "mes":"Your program was not currently connected to the host presentation space."},
+                        {"num":2, "mes":"An incorrect parameter was passed to HLLAPI"},
+                        {"num":4, "mes":"The host session was busy; all of the keystrokes could not be sent."},
+                        {"num":5, "mes":"Input to the target session was inhibited or rejected; all of the keystrokes could not be sent."},
+                        {"num":9, "mes":"A system error was encountered."}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {
+            "functionNumber": 4,
+            "name": "Wait",
+            "returnCode": 1,
+            "message": [{"num":1, "mes":"Your program was not currently connected to the host presentation space."},
+                        {"num":4, "mes":"Timeout while still in XCLOCK (X []) or XSYSTEM"},
+                        {"num":5, "mes":"The keyboard is locked"},
+                        {"num":9, "mes":"A system error was encountered."}
+            ],
             "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
         }
     ]

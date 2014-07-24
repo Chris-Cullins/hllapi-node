@@ -5,18 +5,26 @@
   messages = require('./messages.json');
 
   debugHLLAPI = function(mode, functionNum, returnCode, dataString) {
-    var messageArray, messageObj, ts_hms;
+    var functionMessageObj, message, ts_hms, x, _i, _j, _ref, _ref1;
     if (mode) {
       if (returnCode > 0) {
         ts_hms = new Date();
-        messageArray = messages.functionMessageArray;
-        messageObj = messageArray[functionNum - 1];
-        console.log("\n\n[" + ts_hms.toISOString() + "]: Error on Function Name '" + messageObj.name + "'.");
+        for (x = _i = 0, _ref = messages.functionMessageArray.length - 1; _i <= _ref; x = _i += 1) {
+          if (messages.functionMessageArray[x].functionNumber === functionNum) {
+            functionMessageObj = messages.functionMessageArray[x];
+          }
+        }
+        console.log("\n\n[" + ts_hms.toISOString() + "]: Error on Function Name '" + functionMessageObj.name + "'.");
         console.log("This function was called inside:");
         console.log("You passed it the following data: " + dataString);
         console.log("HLLAPI returned a return code of: " + returnCode);
-        console.log("HLLAPI's  message: " + messageObj.message);
-        console.log("Explaination: " + messageObj.explaination + "\n\n");
+        for (x = _j = 0, _ref1 = functionMessageObj.message.length - 1; _j <= _ref1; x = _j += 1) {
+          if (functionMessageObj.message[x].num === returnCode) {
+            message = functionMessageObj.message[x].mes;
+          }
+        }
+        console.log("HLLAPI's  message: " + message);
+        console.log("Explaination: " + functionMessageObj.explaination + "\n\n");
       }
     }
   };
