@@ -17,7 +17,10 @@ debugHLLAPI = (mode, functionNum, returnCode, dataString) ->
                 if functionMessageObj.message[x].num is returnCode
                     message = functionMessageObj.message[x].mes
 
-            console.log "HLLAPI's  message: " + message
+            if message?
+                console.log "HLLAPI's  message: " + message
+            else
+                console.log "No HLLAPI message found. Something must have gone terribly wrong."
             ##console.log "Explaination: " + functionMessageObj.explaination + "\n\n"
     return
 

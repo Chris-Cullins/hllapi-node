@@ -62,6 +62,7 @@
     length = ref.alloc(ref.types.int32, 0);
     ps_position = ref.alloc(ref.types.int32, 0);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 4, ps_position.deref(), '');
     return ps_position.deref();
   };
 
@@ -72,6 +73,7 @@
     length = ref.alloc(ref.types.int32, 8000);
     ps_position = ref.alloc(ref.types.int32, 0);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 5, ps_position.deref(), '');
     return data_string;
   };
 
@@ -82,6 +84,7 @@
     length = ref.alloc(ref.types.int32, target.length);
     ps_position = ref.alloc(ref.types.int32, 0);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 6, ps_position.deref(), target);
     return {
       'returnCode': ps_position.deref(),
       'position': length.deref()

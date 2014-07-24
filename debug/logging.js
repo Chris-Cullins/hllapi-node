@@ -23,7 +23,11 @@
             message = functionMessageObj.message[x].mes;
           }
         }
-        console.log("HLLAPI's  message: " + message);
+        if (message != null) {
+          console.log("HLLAPI's  message: " + message);
+        } else {
+          console.log("No HLLAPI message found. Something must have gone terribly wrong.");
+        }
       }
     }
   };
