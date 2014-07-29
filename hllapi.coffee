@@ -89,6 +89,7 @@ queryCursorLocation = () ->
     ps_position = ref.alloc(ref.types.int32, 0)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 7, ps_position.deref(), '')
     return {'returnCode':ps_position.deref(), 'position':length.deref()}
 
 
@@ -103,6 +104,7 @@ copyPresentationSpaceToString = (sizeOfSpace) ->
     ps_position = ref.alloc(ref.types.int32, 0)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 8, ps_position.deref(), sizeOfSpace)
     return {'returnCode':ps_position.deref(), 'position':length.deref()}
 
 setSessionParameters = (input) ->
@@ -112,6 +114,7 @@ setSessionParameters = (input) ->
     ps_position = ref.alloc(ref.types.int32, position)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 9, ps_position.deref(), input)
     return ps_position.deref()
 
 pause = (time) ->
@@ -121,6 +124,7 @@ pause = (time) ->
     ps_position = ref.alloc(ref.types.int32, position)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 18, ps_position.deref(), time)
     return ps_position.deref()
 
 
@@ -131,6 +135,7 @@ querySessionStatus = (presSpace) ->
     ps_position = ref.alloc(ref.types.int32, 0)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 22, ps_position.deref(), presSpace)
     return ps_position.deref()
 
 startHostNotification = (param) ->
@@ -140,6 +145,7 @@ startHostNotification = (param) ->
     ps_position = ref.alloc(ref.types.int32, 0)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 23, ps_position.deref(), param)
     return ps_position.deref()
 
 queryHostUpdate = (presSpace) ->
@@ -149,6 +155,7 @@ queryHostUpdate = (presSpace) ->
     ps_position = ref.alloc(ref.types.int32, 0)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 24, ps_position.deref(), presSpace)
     return ps_position.deref()
 
 stopHostNotification = (presSpace) ->
@@ -158,6 +165,7 @@ stopHostNotification = (presSpace) ->
     ps_position = ref.alloc(ref.types.int32, 0)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 121, ps_position.deref(), presSpace)
     return ps_position.deref()
 
 findFieldPosition = (input, position) ->
@@ -167,6 +175,7 @@ findFieldPosition = (input, position) ->
     ps_position = ref.alloc(ref.types.int32, position)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 31, ps_position.deref(), input)
     return {'returnCode':ps_position.deref(), 'length':length.deref()}
 
 copyStringtoField = (input, position) ->
@@ -176,6 +185,7 @@ copyStringtoField = (input, position) ->
     ps_position = ref.alloc(ref.types.int32, position)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 33, ps_position.deref(), input)
     return ps_position.deref()
 
 
@@ -186,6 +196,7 @@ copyFieldtoString = (targetString, position) ->
     ps_position = ref.alloc(ref.types.int32, position)
 
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    debug.debugHLLAPI(debugMode, 34, ps_position.deref(), targetString)
     return {'returnCode':ps_position.deref(), 'position':length.deref(), 'dataString':data_string.deref()}
 
 ## TEST CALLS, DELETE BEFORE NPM PUBLISHING ######
