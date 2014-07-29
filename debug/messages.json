@@ -68,6 +68,14 @@
             "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
         },
         {   "functionNumber": 7,
+            "name": "QueryCursorLocation",
+            "returnCode": [1,9],
+            "message": [{"num":1, "mes":"Your program was not currently connected to the host presentation space."},
+                        {"num":2, "mes":"A system error was encountered"}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {   "functionNumber": 8,
             "name": "CopyPresentationSpaceToString",
             "returnCode": [1,2,4,5,7,9],
             "message": [{"num":1, "mes":"Your program was not currently connected to the host presentation space."},
@@ -76,6 +84,99 @@
                         {"num":5, "mes":"The host presentation space was copied. The keyboard was locked"},
                         {"num":7, "mes":"The host presentation space position is not valid."},
                         {"num":9, "mes":"A system error was encountered."}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {   "functionNumber": 9,
+            "name": "SetSessionParameters",
+            "returnCode": [2,9],
+            "message": [{"num":2, "mes":"One or more parameters were not valid."},
+                        {"num":9, "mes":"A system error was encountered."}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {   "functionNumber": 18,
+            "name": "Pause",
+            "returnCode": [9,26],
+            "message": [{"num":9, "mes":"One or more parameters were not valid."},
+                        {"num":26, "mes":"The host session presentation space or OIA has been updated. Use the Query Host Update function to get more information."}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {   "functionNumber": 22,
+            "name": "QuerySessionStatus",
+            "returnCode": [1,2,9],
+            "message": [{"num":1, "mes":"An incorrect host presentation space was specified."},
+                        {"num":2, "mes":"An incorrect string length was made."},
+                        {"num":9, "mes":"A system error was encountered."}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {   "functionNumber": 23,
+            "name": "StartHostNotification",
+            "returnCode": [1,2,9],
+            "message": [{"num":1, "mes":"An incorrect host presentation space was specified."},
+                        {"num":2, "mes":"An error was made in designation parameters"},
+                        {"num":9, "mes":"A system error was encountered."}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {   "functionNumber": 24,
+            "name": "QueryHostUpdate",
+            "returnCode": [1,8,9,21,22,23,44],
+            "message": [{"num":1, "mes":"An incorrect host presentation space was specified."},
+                        {"num":8, "mes":"No prior StartHostNotification function was called for host presentation space ID."},
+                        {"num":9, "mes":"A system error was encountered."},
+                        {"num":21, "mes":"The OIA was updated"},
+                        {"num":22, "mes":"The presentation space was updated."},
+                        {"num":23, "mes":"Both the OIA and the host presentation space were updated."},
+                        {"num":44, "mes":"Printing has completed in the printer session"}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {   "functionNumber": 25,
+            "name": "StopHostNotification",
+            "returnCode": [1,8,9],
+            "message": [{"num":1, "mes":"An incorrect host presentation space was specified."},
+                        {"num":2, "mes":"No previous Start Host Notification function was issued"},
+                        {"num":9, "mes":"A system error was encountered."}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {   "functionNumber": 31,
+            "name": "FindFieldPosition",
+            "returnCode": [1,2,7,9,24,28],
+            "message": [{"num":1, "mes":"An incorrect host presentation space was specified."},
+                        {"num":2, "mes":"A parameter error was encountered."},
+                        {"num":7, "mes":"The host presentation space position is not valid."},
+                        {"num":9, "mes":"A system error was encountered."},
+                        {"num":24, "mes":"No such field was found."},
+                        {"num":28, "mes":"Field length of 0 bytes"}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {   "functionNumber": 33,
+            "name": "CopyStringToField",
+            "returnCode": [1,2,5,6,7,9,24],
+            "message": [{"num":1, "mes":"Your program is not connected to a host session."},
+                        {"num":2, "mes":"Parameter error or zero length for copy."},
+                        {"num":5, "mes":"The target field was protected or inhibited, or incorrect data was sent to the target field (such as a field attribute)."},
+                        {"num":6, "mes":"Copy was completed, but the data is truncated"},
+                        {"num":7, "mes":"The host presentation space opsition is not valid."},
+                        {"num":9, "mes":"A system error was encountered."},
+                        {"num":24, "mes":"Unformatted host presentation space."}
+            ],
+            "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
+        },
+        {   "functionNumber": 34,
+            "name": "CopyFieldToString",
+            "returnCode": [1,2,6,7,9,24],
+            "message": [{"num":1, "mes":"Your program is not connected to a host session."},
+                        {"num":2, "mes":"An error was made in specifying parameters."},
+                        {"num":6, "mes":"The data to be copied and the target field are not the same size. The data is truncated if the string length is smaller than the field copied."},
+                        {"num":7, "mes":"The host presentation space position is not valid."},
+                        {"num":9, "mes":"A system error was encountered."},
+                        {"num":24, "mes":"Unformatted host presentation space."}
             ],
             "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
         }
