@@ -66,7 +66,8 @@
                         {"num":24, "mes":"The search string was not found."}
             ],
             "explaination": "You never connected to a presentation space. Check for error messages involving Connect Presentation Space. If there are none, you did remember to call it, right?"
-        },    "functionNumber": 7,
+        },
+        {   "functionNumber": 7,
             "name": "CopyPresentationSpaceToString",
             "returnCode": [1,2,4,5,7,9],
             "message": [{"num":1, "mes":"Your program was not currently connected to the host presentation space."},

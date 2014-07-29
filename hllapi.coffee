@@ -105,6 +105,69 @@ copyPresentationSpaceToString = (sizeOfSpace) ->
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
     return {'returnCode':ps_position.deref(), 'position':length.deref()}
 
+setSessionParameters = (input) ->
+    function_number = ref.alloc(ref.types.int32, 9)
+    data_string = ref.allocCString(input)
+    length = ref.alloc(ref.types.int32, input.length)
+    ps_position = ref.alloc(ref.types.int32, position)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return ps_position.deref()
+
+pause = (time) ->
+    function_number = ref.alloc(ref.types.int32, 18)
+    data_string = ref.allocCString('')
+    length = ref.alloc(ref.types.int32, time)
+    ps_position = ref.alloc(ref.types.int32, position)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return ps_position.deref()
+
+
+querySessionStatus = (presSpace) ->
+    function_number = ref.alloc(ref.types.int32, 22)
+    data_string = ref.allocCString(presSpace)
+    length = ref.alloc(ref.types.int32, 20)
+    ps_position = ref.alloc(ref.types.int32, 0)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return ps_position.deref()
+
+startHostNotification = (param) ->
+    function_number = ref.alloc(ref.types.int32, 23)
+    data_string = ref.allocCString(param)
+    length = ref.alloc(ref.types.int32, 16)
+    ps_position = ref.alloc(ref.types.int32, 0)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return ps_position.deref()
+
+queryHostUpdate = (presSpace) ->
+    function_number = ref.alloc(ref.types.int32, 24)
+    data_string = ref.allocCString(presSpace)
+    length = ref.alloc(ref.types.int32, 4)
+    ps_position = ref.alloc(ref.types.int32, 0)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return ps_position.deref()
+
+stopHostNotification = (presSpace) ->
+    function_number = ref.alloc(ref.types.int32, 121)
+    data_string = ref.allocCString(presSpace)
+    length = ref.alloc(ref.types.int32, 4)
+    ps_position = ref.alloc(ref.types.int32, 0)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return ps_position.deref()
+
+findFieldPosition = (input, position) ->
+    function_number = ref.alloc(ref.types.int32, 31)
+    data_string = ref.allocCString(input)
+    length = ref.alloc(ref.types.int32, input.length)
+    ps_position = ref.alloc(ref.types.int32, position)
+
+    hllapi.WinHLLAPI(function_number, data_string, length, ps_position)
+    return {'returnCode':ps_position.deref(), 'length':length.deref()}
 
 copyStringtoField = (input, position) ->
     function_number = ref.alloc(ref.types.int32, 33)

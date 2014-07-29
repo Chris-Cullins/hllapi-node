@@ -21,7 +21,6 @@ debugHLLAPI = (mode, functionNum, returnCode, dataString) ->
                 console.log "HLLAPI's  message: " + message
             else
                 console.log "No HLLAPI message found. Something must have gone terribly wrong."
-            ##console.log "Explaination: " + functionMessageObj.explaination + "\n\n"
     return
 
 
