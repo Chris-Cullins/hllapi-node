@@ -98,6 +98,7 @@
     length = ref.alloc(ref.types.int32, 0);
     ps_position = ref.alloc(ref.types.int32, 0);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 7, ps_position.deref(), '');
     return {
       'returnCode': ps_position.deref(),
       'position': length.deref()
@@ -115,6 +116,7 @@
     length = ref.alloc(ref.types.int32, 0);
     ps_position = ref.alloc(ref.types.int32, 0);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 8, ps_position.deref(), sizeOfSpace);
     return {
       'returnCode': ps_position.deref(),
       'position': length.deref()
@@ -128,6 +130,7 @@
     length = ref.alloc(ref.types.int32, input.length);
     ps_position = ref.alloc(ref.types.int32, position);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 9, ps_position.deref(), input);
     return ps_position.deref();
   };
 
@@ -138,6 +141,7 @@
     length = ref.alloc(ref.types.int32, time);
     ps_position = ref.alloc(ref.types.int32, position);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 18, ps_position.deref(), time);
     return ps_position.deref();
   };
 
@@ -148,6 +152,7 @@
     length = ref.alloc(ref.types.int32, 20);
     ps_position = ref.alloc(ref.types.int32, 0);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 22, ps_position.deref(), presSpace);
     return ps_position.deref();
   };
 
@@ -158,6 +163,7 @@
     length = ref.alloc(ref.types.int32, 16);
     ps_position = ref.alloc(ref.types.int32, 0);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 23, ps_position.deref(), param);
     return ps_position.deref();
   };
 
@@ -168,6 +174,7 @@
     length = ref.alloc(ref.types.int32, 4);
     ps_position = ref.alloc(ref.types.int32, 0);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 24, ps_position.deref(), presSpace);
     return ps_position.deref();
   };
 
@@ -178,6 +185,7 @@
     length = ref.alloc(ref.types.int32, 4);
     ps_position = ref.alloc(ref.types.int32, 0);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 121, ps_position.deref(), presSpace);
     return ps_position.deref();
   };
 
@@ -188,6 +196,7 @@
     length = ref.alloc(ref.types.int32, input.length);
     ps_position = ref.alloc(ref.types.int32, position);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 31, ps_position.deref(), input);
     return {
       'returnCode': ps_position.deref(),
       'length': length.deref()
@@ -201,6 +210,7 @@
     length = ref.alloc(ref.types.int32, input.length);
     ps_position = ref.alloc(ref.types.int32, position);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 33, ps_position.deref(), input);
     return ps_position.deref();
   };
 
@@ -211,6 +221,7 @@
     length = ref.alloc(ref.types.int32, targetString.length);
     ps_position = ref.alloc(ref.types.int32, position);
     hllapi.WinHLLAPI(function_number, data_string, length, ps_position);
+    debug.debugHLLAPI(debugMode, 34, ps_position.deref(), targetString);
     return {
       'returnCode': ps_position.deref(),
       'position': length.deref(),
@@ -218,12 +229,40 @@
     };
   };
 
-  setDebugMode(true);
+  exports.connectPresentationSpace = connectPresentationSpace;
 
-  connectPresentationSpace('A');
+  exports.disconnectPresentationSpace = disconnectPresentationSpace;
 
-  sendKey("H");
+  exports.sendKey = sendKey;
 
-  sendKey("I");
+  exports.wait = wait;
+
+  exports.copyPresentationSpace = copyPresentationSpace;
+
+  exports.searchPresentationSpace = searchPresentationSpace;
+
+  exports.queryCursorLocation = queryCursorLocation;
+
+  exports.copyPresentationSpaceToString = copyPresentationSpaceToString;
+
+  exports.setSessionParameters = setSessionParameters;
+
+  exports.pause = pause;
+
+  exports.querySessionStatus = querySessionStatus;
+
+  exports.queryHostUpdate = queryHostUpdate;
+
+  exports.startHostNotification = startHostNotification;
+
+  exports.stopHostNotification = stopHostNotification;
+
+  exports.findFieldPosition = findFieldPosition;
+
+  exports.copyStringtoField = copyStringtoField;
+
+  exports.copyFieldtoString = copyFieldtoString;
 
 }).call(this);
+
+//# sourceMappingURL=hllapi.map

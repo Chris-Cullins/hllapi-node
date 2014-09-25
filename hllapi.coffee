@@ -5,6 +5,7 @@ debug = require('./debug/logging')
 intPtr = ref.refType(ref.types.int32)
 cString = ref.refType(ref.types.CString)
 
+
 debugMode = false
 
 hllapi = ffi.Library('hllapi32', {
@@ -199,9 +200,22 @@ copyFieldtoString = (targetString, position) ->
     debug.debugHLLAPI(debugMode, 34, ps_position.deref(), targetString)
     return {'returnCode':ps_position.deref(), 'position':length.deref(), 'dataString':data_string.deref()}
 
-## TEST CALLS, DELETE BEFORE NPM PUBLISHING ######
-setDebugMode(true)
-connectPresentationSpace('A')
-sendKey("H")
-sendKey("I")
-#console.log disconnectPresentationSpace()
+
+## Export functions ###########################################
+exports.connectPresentationSpace = connectPresentationSpace;
+exports.disconnectPresentationSpace = disconnectPresentationSpace;
+exports.sendKey = sendKey;
+exports.wait = wait;
+exports.copyPresentationSpace = copyPresentationSpace;
+exports.searchPresentationSpace = searchPresentationSpace;
+exports.queryCursorLocation = queryCursorLocation;
+exports.copyPresentationSpaceToString = copyPresentationSpaceToString;
+exports.setSessionParameters = setSessionParameters;
+exports.pause = pause;
+exports.querySessionStatus = querySessionStatus;
+exports.queryHostUpdate = queryHostUpdate;
+exports.startHostNotification = startHostNotification;
+exports.stopHostNotification = stopHostNotification;
+exports.findFieldPosition  = findFieldPosition;
+exports.copyStringtoField = copyStringtoField;
+exports.copyFieldtoString = copyFieldtoString;
