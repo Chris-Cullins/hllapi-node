@@ -7,7 +7,7 @@
     "node-gyp": "^0.13.1",
     "ref": "^0.3.2",
     "ffi": "^1.2.7",
-    "jasmine-node": "1.14.3"
+    "jasmine-node": "1.14.2"
   },
   "devDependencies": {},
   "scripts": {
